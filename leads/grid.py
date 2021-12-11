@@ -5,7 +5,7 @@ from pathlib import Path
 import cartopy.crs as ccrs
 import re
 
-from typing import Union, Optional, List, NoReturn, Callable, Tuple #, Type
+from typing import Union, Optional, List, Callable, Tuple #, Type
 
 from leads.granule import Granule#, ATL09, ATL07, ATL10
 from leads.database import is2db
@@ -37,7 +37,7 @@ class Grid:
             self.load()
         return
     
-    def load(self) -> NoReturn: 
+    def load(self) -> None: 
         '''
         Load the monthly mean data from the files
         in the database db. 

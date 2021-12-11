@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import re
 from pathlib import Path
-from typing import Union, Optional, List, NoReturn#, Type
+from typing import Union, Optional, List#, Type
 
 from .utils import strong_beam
 
@@ -44,7 +44,7 @@ class is2db:
                  vrl: Optional[bool] = True,
                  strong: Optional[bool] = True,
                  filename = None,
-                ) -> NoReturn:
+                ) -> None:
         '''
         Initialize ICESat-2 database class object. 
         This requires the IS2 data to be stored in the following way. 
@@ -77,7 +77,7 @@ class is2db:
         return
     
     
-    def from_file(self,filename: Union[str,Path]) -> NoReturn:
+    def from_file(self,filename: Union[str,Path]) -> None:
         '''
         read product data lists from file. 
         
@@ -103,7 +103,7 @@ class is2db:
     def to_file(self,
                 filename: Union[str,Path],
                 verbose: Optional[bool] = True,
-               ) -> NoReturn:
+               ) -> None:
         '''
         Write is2db instance to files.
         The list of products and the filenames of the csv file that
@@ -137,7 +137,7 @@ class is2db:
                     dataroot: Optional[ Union[str,Path] ] = None,
                     vrl: Optional[bool] = True,
                     strong: Optional[bool] = True,
-                   ) -> NoReturn :
+                   ) -> None :
         '''
         Add information of the IS2 data product to the database. 
         
@@ -211,7 +211,7 @@ class is2db:
                   prd: Optional[str] = None, 
                   db_df: Optional[pd.DataFrame] = None,
                   dataroot: Optional[ Union[str,Path] ] = None,
-                 ) -> NoReturn :
+                 ) -> None :
         '''
         Update the is2db instance using product name and the pandas.DataFrame containing
         the data information.
@@ -231,7 +231,7 @@ class is2db:
         if dataroot is not None: self.root = dataroot
         return
     
-    def disp_gran(self,rgt: Union[int,np.int64],cycle: Union[int,np.int64]) -> NoReturn:
+    def disp_gran(self,rgt: Union[int,np.int64],cycle: Union[int,np.int64]) -> None:
         '''
         Print the filenames of all products for this granule. 
         
@@ -247,7 +247,7 @@ class is2db:
             print('{0}: {1} :: {2}'.format(prd,tdf.iloc[0].time,tdf.iloc[0].fn))
         return
     
-    def info(self) -> NoReturn:
+    def info(self) -> None:
         '''
         Print brief information about database. 
         '''

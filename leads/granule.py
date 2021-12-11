@@ -3,10 +3,11 @@ import xarray as xr
 import pandas as pd
 import cartopy.crs as ccrs
 
-from typing import Union, Optional, List, NoReturn, Callable, Tuple #, Type
+from typing import Union, Optional, List, Callable, Tuple,Type #, Type
 
 from .utils import strong_beam, read_beam
 from .leads import Lead, Floe
+from .database import is2db
 from lzpyx.arccyc.cyctrack import mapset, ptproj
 
 InDex = Union[int,np.int64,float]
@@ -20,8 +21,8 @@ class Granule():
                  rgt: Optional[IntType ]= None,
                  beam_num: Optional[IntType ] = None,
                  prdlist: Optional[ List[str] ] = None,
-                 db: Optional[ 'is2db' ] = None,
-                ) -> NoReturn:
+                 db: Optional[ Type[is2db] ] = None,
+                ) -> None:
         '''
         Initialize the ATL10 instance.
         
@@ -52,7 +53,7 @@ class Granule():
                     rgt: Optional[IntType ]= None,
                     beam_num: Optional[IntType ] = None,
                     prdlist: Optional[ List[str] ] = None,
-                    db: Optional[ 'is2db' ] = None) -> NoReturn:
+                    db: Optional[ Type[is2db] ] = None) -> None:
         '''
         Set granule attributes.
         
@@ -73,7 +74,7 @@ class Granule():
         if db is not None and not hasattr(self,'db'): self.db = db
         return
     
-    def info(self) -> NoReturn:
+    def info(self) -> None:
         '''
         Print out information of the granule. 
         '''
@@ -90,7 +91,7 @@ class Granule():
         if hasattr(self,'db'): self.db.disp_gran(rgt=rgt,cycle=cycle)
         return
     
-    def add_product(self,prd: str) -> NoReturn:
+    def add_product(self,prd: str) -> None:
         '''
         Add a data product to the granule.
         
@@ -487,7 +488,7 @@ class ATL09():
                  rgt:IntType = None,
                  cycle:IntType = None,
                  beam: Optional[str] = None,
-                 data: Optional[xr.Dataset] = None) -> NoReturn:
+                 data: Optional[xr.Dataset] = None) -> None:
         '''
         Initialie the ATL10 instance.
         
@@ -736,7 +737,7 @@ class ATL07():
                  rgt:IntType = None,
                  cycle:IntType = None,
                  beam: Optional[str] = None,
-                 data: Optional[xr.Dataset] = None) -> NoReturn:
+                 data: Optional[xr.Dataset] = None) -> None:
         '''
         Initialie the ATL10 instance.
         
@@ -777,7 +778,7 @@ class ATL07():
         return tdf    
     
 
-    def check_leads(self,lead_flag=None) -> NoReturn:
+    def check_leads(self,lead_flag=None) -> None:
         '''
         Check if there is any lead found in the granule. 
         '''
@@ -792,7 +793,7 @@ class ATL07():
         return 
 
 
-    def connect_feature(self,feat_flag=None,gap_div=True) -> NoReturn:
+    def connect_feature(self,feat_flag=None,gap_div=True) -> None:
         '''
         return start and end of height segment ids for continuous leads in granule
         '''
@@ -899,7 +900,7 @@ class ATL07():
             df = pd.DataFrame()
         return df
     
-    def _seglen(self,direct: Optional[bool] = True) -> NoReturn:
+    def _seglen(self,direct: Optional[bool] = True) -> None:
         '''
         Add height_segment length to another variable in the data. 
         In V003, the length_seg might not be correctly calculated due to 
@@ -915,7 +916,7 @@ class ATL07():
             
         return
     
-    def _add_leads(self,wmin=100,lead_flag=None) -> NoReturn:
+    def _add_leads(self,wmin=100,lead_flag=None) -> None:
         '''
         Add connected leads to the ATL07 instance. 
         '''
@@ -949,7 +950,7 @@ class ATL07():
     
         return
     
-    def _add_floes(self,wmin=100,floe_flag=None) -> NoReturn:
+    def _add_floes(self,wmin=100,floe_flag=None) -> None:
         '''
         Add connected leads to the ATL07 instance. 
         '''

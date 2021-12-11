@@ -6,11 +6,10 @@ import cartopy.crs as ccrs
 import matplotlib.pyplot as plt
 import re
 
-from typing import Union, Optional, List, NoReturn, Callable, Tuple #, Type
+from typing import Union, Optional, List,  Callable, Tuple #, Type
 
 from leads.granule import Granule#, ATL09, ATL07, ATL10
 from leads.gridgran import Gridded_Granule
-from leads.database import is2db
 from lzpyx.arccyc.cyctrack import mapset,ptproj
 
 
@@ -63,7 +62,7 @@ class GG_Coarse(Gridded_Granule):
                      db_df: pd.DataFrame, 
                      db_landsea: Optional[pd.DataFrame] = None,
                      clean: Optional[bool] = True,
-                    ) -> NoReturn:
+                    ) -> None:
         '''
         Load the gridded granule IS2 data to produce the composite.
         
@@ -126,7 +125,7 @@ class GG_Coarse(Gridded_Granule):
     def add_granule(self,
                     fn: Union[str,Path],
                     fn_landsea: Optional[Union[str,Path]] = None,
-                   ) -> NoReturn:
+                   ) -> None:
         '''
         Add gridded granule IS2 data to the composite data on the full
         2D grid.
