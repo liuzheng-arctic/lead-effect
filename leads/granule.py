@@ -7,8 +7,12 @@ from typing import Union, Optional, List, Callable, Tuple,Type #, Type
 
 from .utils import strong_beam, read_beam
 from .leads import Lead, Floe
+<<<<<<< HEAD
 from .database import is2db
 from lzpyx.arccyc.cyctrack import mapset, ptproj
+=======
+from .utils import mapset, ptproj
+>>>>>>> 98382a0a4c62585bb2dabd2c93ec785b96db0afa
 
 InDex = Union[int,np.int64,float]
 IntType = Union[int, np.int64]

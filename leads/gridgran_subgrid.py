@@ -11,7 +11,7 @@ from typing import Union, Optional, List, Callable, Tuple #, Type
 from leads.granule import Granule#, ATL09, ATL07, ATL10
 from leads.gridgran import Gridded_Granule
 from leads.database import is2db
-from lzpyx.arccyc.cyctrack import mapset,ptproj
+from leads.utils import mapset,ptproj
 
 
 Scalar = Union[int,np.int64,float]

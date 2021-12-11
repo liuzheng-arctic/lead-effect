@@ -9,7 +9,7 @@ from typing import Union, Optional, List, Callable, Tuple #, Type
 
 from leads.granule import Granule#, ATL09, ATL07, ATL10
 from leads.database import is2db
-from lzpyx.arccyc.cyctrack import mapset,ptproj
+from .utils import mapset,ptproj
 
 
 Scalar = Union[int,np.int64,float]
